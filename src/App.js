@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import "bulma/css/bulma.css";
+import { Title } from "./components/Title";
+import { SearchForm } from "./components/SearchForm";
+import { Results } from "./components/Results";
+
+import { useState } from "react";
 
 function App() {
+  const [movie, setSMovie] = useState("");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Title>Movies App</Title>
+      <div className="center">
+        <SearchForm movie={(data) => setSMovie(data)} />
+        <Results movie={movie} />
+      </div>
     </div>
   );
 }
